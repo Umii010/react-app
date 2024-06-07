@@ -28,6 +28,23 @@ return (
 <li className="nav-item">
 <a className="nav-link active text-white" aria-current="page" href="/signup">Signup</a>
 </li>
+<li className="nav-item">
+<a className="nav-link active text-white" aria-current="page" href="/dashboard">Dashboard</a>
+</li>
+<li className="nav-item">
+<a className="nav-link active text-white" aria-current="page" href="/text-services">Text Utilities</a>
+</li>
+<li className="nav-item dropdown">
+  <a className="nav-link dropdown-toggle text-white" href="/word-to-pdf" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Our Services
+  </a>
+  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+    <li><a className="dropdown-item" href="/word-to-pdf">Word to Pdf</a></li>
+    <li><a className="dropdown-item" href="/text-services/option2">Pdf to Word</a></li>
+    <li><a className="dropdown-item" href="/text-services/option3">Option 3</a></li>
+  </ul>
+</li>
+
 </ul>
 <div className="form-check form-switch">
     <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />

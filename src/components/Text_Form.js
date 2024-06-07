@@ -67,6 +67,15 @@ export default function Text_Form(props) {
   };
 
   return (
+
+    // {alert && (
+    //   <div className={`alert alert-${alert.type} alert-dismissible fade show`} role="alert">
+    //     {alert.msg}
+    //   </div>
+    // )}
+    // <div className={`container my-4 bg-${mode}`} style={{ color: mode === 'dark' ? 'white' : 'black' }}>
+    //   <Text_Form mode={mode} showAlert={showAlert} />
+    // </div>
     <div className={`container my-4 bg-${props.mode}`} style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
       <div>
         <div className="mb-3">

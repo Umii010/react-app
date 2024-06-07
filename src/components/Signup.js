@@ -25,7 +25,7 @@ const handleSubmit = async (e) => {
 e.preventDefault();
 
 try {
-const response = await fetch('http://127.0.0.1:8000/api/student', {
+const response = await fetch('http://127.0.0.1:8000/api/signup', {
 method: 'POST',
 headers: {
 'Content-Type': 'application/json',
@@ -192,7 +192,7 @@ required
 </div>
 
 <div className="text-center">
-<button type="submit" className="btn btn-dark btn-block my-4">
+<button type="submit" className="btn btn-dark btn-block my-3">
 Get Started <i className="fas fa-arrow-right"></i>
 </button>
 </div>

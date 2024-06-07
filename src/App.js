@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Text_Form from './components/Text_Form';
 import Signup from './components/Signup';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+import Alert from './components/Alert';
+import Sidebar from './components/Sidebar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Login from './components/Login';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import WordToPdf from './components/WordToPdf';
 
-function App() {
+const AppContent = () => {
+  const location = useLocation();
   const [mode, setMode] = useState('light'); // State to manage light/dark mode
   const [alert, setAlert] = useState(null);
 
@@ -31,29 +36,31 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/" element={<Navbar />} />
-
-          {/* Add other routes here */}
-        </Routes>
-      </Router>
-
-      {/* Uncomment the following code if you want to use Navbar and Text_Form components */}
-      {/* 
-      <Navbar title="TextUtils" about_text="About" mode={mode} toggleMode={toggleMode} />
-      {alert && (
-        <div className={`alert alert-${alert.type} alert-dismissible fade show`} role="alert">
-          {alert.msg}
+      {location.pathname !== '/dashboard' && <Navbar mode={mode} toggleMode={toggleMode} />}
+      <Alert alert={alert} />
+      <div className="app-container" style={{ display: 'flex' }}>
+        {location.pathname === '/dashboard' && <Sidebar />}
+        <div className="content" style={{ flexGrow: 1, padding: '1rem' }}>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            {/* <Route path="/" element={<Navbar />} /> */}
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/text-services" element={<Text_Form />} />
+            <Route path="/word-to-pdf" element={<WordToPdf />} />
+            {/* Add other routes here */}
+          </Routes>
         </div>
-      )}
-      <div className={`container my-4 bg-${mode}`} style={{ color: mode === 'dark' ? 'white' : 'black' }}>
-        <Text_Form mode={mode} showAlert={showAlert} />
       </div>
-      */}
     </>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 
